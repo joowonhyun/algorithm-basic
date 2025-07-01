@@ -4,7 +4,7 @@ function solution(gate) {
     if (gate[i] === "<") {
       stack.push(gate[i]);
     } else {
-      stack.pop(gate[i]);
+      stack.pop();
     }
   }
   return stack.length === 0;
