@@ -1,20 +1,24 @@
 function solution(n, stations) {
   let answer = 0;
-  let visited = Array.from({ length: n }, () => 0);
-
-  function dfs(station) {
-    visited[station] = 1;
-    for (let i = 0; i < n; i++) {
-      if (stations[station][i] === 1 && visited[i] === 0) {
-        dfs(i);
-      }
-    }
-  }
+  const visited = Array.from({ length: n }, () => 0);
+  const queue = [];
 
   for (let i = 0; i < n; i++) {
-    if (visited[i] === 0) {
-      dfs(i);
+    if (!visited[i]) {
       answer++;
+      queue.push(i);
+      visited[i] = 1;
+
+      while (queue.length) {
+        const x = queue.shift();
+
+        for (let j = 0; j < n; j++) {
+          if (stations[x][j] === 1 && visited[j] === 0) {
+            queue.push(j);
+            visited[j] = 1;
+          }
+        }
+      }
     }
   }
 
