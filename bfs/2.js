@@ -2,10 +2,10 @@ function solution(maps) {
   const n = maps.length;
   const m = maps[0].length;
   /**
-   * dx, dy 상우하좌
+   * dx, dy 상하좌우
    */
-  const dx = [-1, 0, 1, 0];
-  const dy = [0, 1, 0, -1];
+const dx = [-1, 1, 0, 0];
+const dy = [0, 0, -1, 1];
 
   const d = Array.from({ length: n }, () => Array(m).fill(0));
   const queue = [];
